@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderServiceImpl implements OrderService {
-
-    private  MemberRepository memberRepository;
-    private  DiscountPolicy discountPolicy;
+    // final 키워드의 장점 => 선언시 초기화 혹은 생성자로만 내용이 채워짐
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
 
     // 생성자가 한개만 존재할 시 자동적으로 @Autowired가 반영된다
@@ -21,11 +21,11 @@ public class OrderServiceImpl implements OrderService {
         this.discountPolicy = discountPolicy;
     }
 
-    @Autowired
-    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
